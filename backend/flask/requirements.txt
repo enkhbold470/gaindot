@@ -1,3 +1,4 @@
 pymongo
 flask
 ffmpeg-python
+flask-cors
