@@ -1,58 +1,63 @@
 #!/usr/bin/env python
-import base64
 import os
+from flask import Flask, request, jsonify
+from werkzeug.utils import secure_filename
+from flask_cors import CORS
+from video import visualProcessing
+from dotenv import load_dotenv
 
-from flask import Flask, request, jsonify, send_file, after_this_request
-from pymongo import MongoClient
-
-from video import process_video
+load_dotenv(".env")
 
 app = Flask(__name__)
-# app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 1024 # 1GB
+app.config["UPLOAD_FOLDER"] = "./uploads"
+app.config["MAX_CONTENT_LENGTH"] = 1024 * 1024 * 1024  # 1GB
+CORS(app)
 
-client = MongoClient("mongo:27017")
+if not os.path.exists(app.config["UPLOAD_FOLDER"]):
+    os.makedirs(app.config["UPLOAD_FOLDER"])
 
 
 @app.route("/")
 def root():
-    return "Alive"
+    return "SERVER IS RUNNING"
 
 
 @app.route("/upload", methods=["POST"])
 def upload_video():
-    if "file" not in request.files:
-        return jsonify({"error": "No file part in the request"}), 400
+    try:
+        if "video" not in request.files:
+            return jsonify({"error": "No video part in the request"}), 400
 
-    file = request.files["file"]
-    if file.filename == "":
-        return jsonify({"error": "No selected file"}), 400
+        file = request.files["video"]
+        if file.filename == "":
+            return jsonify({"error": "No selected video"}), 400
 
-    # Check if the file is an MP4 video
-    if file.filename.split(".")[-1].lower() not in ["mp4"]:
+        # Save the file
+        filename = secure_filename(file.filename)
+        file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+        file.save(file_path)
+
+        exercise = visualProcessing(
+            file_path,
+            "video.mp4",
+            f"{os.getenv("config_p")}",
+        )
+        print(f"Video saved to: {file_path}")
+        print(f"config_p: {os.getenv('config_p')}")
+        
+        # with json format of four attributes, exercise, accuracy percentage, and booleanApproved. if exercise is not recognized, return None on exercise attribute and booleanApproved as False.
+        booleanApproved = True
+        if exercise == 0:
+            booleanApproved = False
+        print(f"Exercise: {exercise}")
         return (
-            jsonify({"error": "Unsupported file format. Only MP4 videos are allowed"}),
-            400,
+            jsonify({"exercise": exercise, "booleanApproved": booleanApproved}),
+            200,
         )
 
-    # Process file
-    out_path, alignment_score, alignment_mask, depth = process_video(file)
-
-    # Encode file content as base64
-    with open(out_path, "rb") as f:
-        file_content = base64.b64encode(f.read()).decode("utf-8")
-
-    # Delete the file after reading
-    os.remove(out_path)
-
-    response_data = {
-        "tracking_data": {
-            "alignment_score": alignment_score,
-            "alignment_mask": alignment_mask,
-            "depth": depth,
-        },
-        "file_content": file_content,
-    }
-    return jsonify(response_data), 200
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return jsonify({"error": "An error occurred during processing"}), 500
 
 
 if __name__ == "__main__":
