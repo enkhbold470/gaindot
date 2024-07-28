@@ -30,8 +30,8 @@ export function FloatingNavDemo() {
       ),
     },
     {
-      name: "Friends",
-      link: "/friends",
+      name: "NTFs",
+      link: "/ntfs",
       icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
   ];

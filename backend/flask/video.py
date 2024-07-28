@@ -36,7 +36,7 @@ def visualProcessing(file_path, cd_file_path, prompt):
         {
             "role": "user",
             "content": [
-                f"{prompt}",
+                "What kind of exercise doing in this video? is this person doing exercise or not, return only numbers from 0 to 100 based on not doing exercise to doing exercise",
                 *map(
                     lambda x: {"image": x, "resize": 768},
                     base64Frames[0 : len(base64Frames) // 2],
