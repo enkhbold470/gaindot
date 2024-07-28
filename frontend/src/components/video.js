@@ -36,7 +36,7 @@ export default function VideoInput(props) {
           src={source}
         />
       )}
-      <div className="flex justify-center">{source || "Nothing selectd"}</div>
+      <div className="flex justify-center">{source || "Nothing selected"}</div>
     </div>
   );
 }

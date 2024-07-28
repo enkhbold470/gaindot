@@ -5,7 +5,7 @@ import { SparklesCore } from "@/components/ui/sparkles";
 export default function Hero() {
   return (
     <div className="h-[40rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
-      <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
+      <div className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
         <h1 className="lg:text-[3rem] text-xs text-gray-500 font-normal">
           Gain muscle and
         </h1>
@@ -13,7 +13,7 @@ export default function Hero() {
           GainD
           <img className="lg:w-[7rem] w-[2rem]" src="polkadot.svg" />T
         </div>
-      </h1>
+      </div>
       <div className="w-[40rem] h-40 relative">
         {/* Gradients */}
         <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
