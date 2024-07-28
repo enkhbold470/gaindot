@@ -1,11 +1,11 @@
 "use client";
-import VideoInput from "@/components/video";
+import VideoUpload from "@/components/video";
 
 export default function Home() {
   return (
-    <div className="flex justify-center">
+    <div className="flex m-4 p-4 items-center">
       <h1>Video upload</h1>
-      <VideoInput width={400} height={300} />
+      <VideoUpload />
     </div>
   );
 }
