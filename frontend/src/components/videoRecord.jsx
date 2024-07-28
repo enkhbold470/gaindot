@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
-
+//use .env file for HOST
+const HOST = process.env.HOST;
+console.log(HOST);
 const VideoRecorder = () => {
   const videoRef = useRef(null);
   const [mediaRecorder, setMediaRecorder] = useState(null);
@@ -42,7 +44,7 @@ const VideoRecorder = () => {
     const formData = new FormData();
     formData.append("video", blob);
 
-    fetch("http://localhost:5000/upload", {
+    fetch(HOST + "/upload", {
       method: "POST",
       body: formData,
     })
