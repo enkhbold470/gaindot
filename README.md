@@ -1,4 +1,4 @@
-# gainDOT
+# GainDOT
 
 A blockchain-based fitness app that incentivizes users with APR on investments tied to fitness goals, incorporating social betting, AI exercise tracking, and rewarding users with NFTs and ranks.
 
@@ -25,3 +25,8 @@ https://www.loom.com/share/7bc483d8c734408fb93390a4fa24dd83?sid=e4f55346-4588-4a
 https://gaindot.enk.icu/
 
 ### web Image
+<img width="1680" alt="Screenshot 2024-07-28 at 2 31 28 PM" src="https://github.com/user-attachments/assets/36f99ba0-4c29-4206-ab69-02a20f2c1353">
+<img width="1680" alt="Screenshot 2024-07-28 at 2 32 54 PM" src="https://github.com/user-attachments/assets/40b09ea4-ffa6-4e59-ba93-48fc9215cfb5">
+<img width="1680" alt="Screenshot 2024-07-28 at 2 33 08 PM" src="https://github.com/user-attachments/assets/ff6638a5-4ad8-4466-8070-61b4829d88e7">
+<img width="1680" alt="Screenshot 2024-07-28 at 2 33 25 PM" src="https://github.com/user-attachments/assets/53eaa32c-2bf1-44f5-ad2c-8c378529ca32">
+
