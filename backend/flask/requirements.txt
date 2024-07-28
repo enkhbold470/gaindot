@@ -1,3 +1,10 @@
 pymongo
 flask
 ffmpeg-python
+flask-cors
+python-dotenv
+opencv-python
+numpy
+openai
+subprocess.run
+python-dotenv
