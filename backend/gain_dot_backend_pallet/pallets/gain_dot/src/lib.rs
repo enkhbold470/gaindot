@@ -1,6 +1,6 @@
 //! Pallet to handle fitness tracking and reward distribution.
 // GainDot Module
-// This module provides functionality for tracking fitness data and rewarding users for their fitness activities.
+//This module provides functionality for tracking fitness data and rewarding users for their fitness activities.
 
 use frame_support::{decl_module, decl_storage, decl_event, decl_error, dispatch};
 use frame_system::ensure_signed;
@@ -8,6 +8,7 @@ use sp_std::vec::Vec;
 
 #[cfg(test)]
 mod mock;
+
 
 #[cfg(test)]
 mod tests;
