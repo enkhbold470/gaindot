@@ -40,11 +40,9 @@ def upload_video():
         exercise = visualProcessing(
             file_path,
             "video.mp4",
-            f"{os.getenv("config_p")}",
         )
         print(f"Video saved to: {file_path}")
-        print(f"config_p: {os.getenv('config_p')}")
-        
+
         # with json format of four attributes, exercise, accuracy percentage, and booleanApproved. if exercise is not recognized, return None on exercise attribute and booleanApproved as False.
         booleanApproved = True
         if exercise == 0:
