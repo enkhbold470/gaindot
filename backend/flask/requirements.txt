@@ -8,3 +8,4 @@ numpy
 openai
 subprocess.run
 python-dotenv
+gunicorn
