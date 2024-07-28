@@ -1,29 +1,27 @@
-# syntax=docker/dockerfile:1.4
-FROM python:3.9-alpine3.16 as builder
+# Use the official Python image as the base image
+FROM python:slim
 
-WORKDIR /src
-COPY requirements.txt /src
+# Set the working directory in the container
+WORKDIR /app
 
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip3 install -r requirements.txt
+# Copy the requirements file to the working directory
+COPY requirements.txt .
 
+# Install the required packages
+RUN pip install -r requirements.txt
+
+# copy .env file to the working directory
+COPY .env .
+
+# Copy the application code to the working directory
 COPY . .
+# Set the environment variable for the timezone
+ENV TZ=America/Boston
+# Set the environment variable for the MongoDB URL
+# ENV MONGODB_URL=<your_mongodb_url_here>
 
-CMD ["python3", "server.py"]
+# Expose the port on which the Flask application will run
+EXPOSE 5000
 
-FROM builder as dev-envs
-
-RUN <<EOF
-apk update
-apk add git
-EOF
-
-RUN <<EOF
-addgroup -S docker
-adduser -S --shell /bin/bash --ingroup docker vscode
-EOF
-
-# install Docker tools (cli, buildx, compose)
-COPY --from=gloursdocker/docker / /
-
-CMD ["python3", "server.py"]
+# Start the Flask application
+CMD ["python", "server.py"]
