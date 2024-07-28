@@ -1,4 +1,3 @@
-// components/VideoRecorder.js
 import React, { useRef, useState } from "react";
 
 const VideoRecorder = () => {
@@ -8,24 +7,30 @@ const VideoRecorder = () => {
   const [stream, setStream] = useState(null);
   const [recordedVideoURL, setRecordedVideoURL] = useState(null);
 
-  const startRecording = async () => {
-    const mediaStream = await navigator.mediaDevices.getUserMedia({
-      video: true,
-    });
-    videoRef.current.srcObject = mediaStream;
-    setStream(mediaStream);
+  const startRecordingWithDelay = async (delay) => {
+    setTimeout(async () => {
+      const mediaStream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+      });
+      videoRef.current.srcObject = mediaStream;
+      setStream(mediaStream);
 
-    const recorder = new MediaRecorder(mediaStream);
-    recorder.ondataavailable = (event) =>
-      setChunks((prev) => [...prev, event.data]);
-    recorder.start();
-    setMediaRecorder(recorder);
+      const recorder = new MediaRecorder(mediaStream);
+      recorder.ondataavailable = (event) =>
+        setChunks((prev) => [...prev, event.data]);
+      recorder.start();
+      setMediaRecorder(recorder);
+    }, delay);
   };
 
-  const stopRecording = () => {
-    mediaRecorder.stop();
-    stream.getTracks().forEach((track) => track.stop());
-    setStream(null);
+  const stopRecordingWithDelay = (delay) => {
+    setTimeout(() => {
+      if (mediaRecorder) {
+        mediaRecorder.stop();
+        stream.getTracks().forEach((track) => track.stop());
+        setStream(null);
+      }
+    }, delay);
   };
 
   const saveRecording = () => {
@@ -35,7 +40,7 @@ const VideoRecorder = () => {
 
     // Optionally, send the video to the backend
     const formData = new FormData();
-    formData.append("video", blob, "video.webm");
+    formData.append("video", blob);
 
     fetch("http://localhost:5000/upload", {
       method: "POST",
@@ -54,11 +59,17 @@ const VideoRecorder = () => {
         style={{ width: "100%", maxWidth: "600px" }}
       ></video>
       <div>
-        <button onClick={startRecording} className="border p-2 m-2">
-          Start Recording
+        <button
+          onClick={() => startRecordingWithDelay(1000)}
+          className="border p-2 m-2"
+        >
+          Start Recording after 3s
         </button>
-        <button onClick={stopRecording} className="border p-2 m-2">
-          Stop Recording
+        <button
+          onClick={() => stopRecordingWithDelay(1000)}
+          className="border p-2 m-2"
+        >
+          Stop Recording after 5s
         </button>
         <button onClick={saveRecording} className="border p-2 m-2">
           Save Recording

@@ -3,6 +3,10 @@ import os
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
+from video import visualProcessing
+from dotenv import load_dotenv
+
+load_dotenv(".env")
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "./uploads"
@@ -32,15 +36,24 @@ def upload_video():
         filename = secure_filename(file.filename)
         file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
         file.save(file_path)
+
+        exercise = visualProcessing(
+            file_path,
+            "video.mp4",
+            f"{os.getenv("config_p")}",
+        )
         print(f"Video saved to: {file_path}")
-
-        # Rename the file to blob.webm
-        # new_file_path = os.path.join(app.config["UPLOAD_FOLDER"], "blob.webm")
-        # os.rename(file_path, new_file_path)
-
-        # Process the video
-
-        return jsonify({"message": "done", "file_path": file_path}), 200
+        print(f"config_p: {os.getenv('config_p')}")
+        
+        # with json format of four attributes, exercise, accuracy percentage, and booleanApproved. if exercise is not recognized, return None on exercise attribute and booleanApproved as False.
+        booleanApproved = True
+        if exercise == 0:
+            booleanApproved = False
+        print(f"Exercise: {exercise}")
+        return (
+            jsonify({"exercise": exercise, "booleanApproved": booleanApproved}),
+            200,
+        )
 
     except Exception as e:
         print(f"An error occurred: {e}")
