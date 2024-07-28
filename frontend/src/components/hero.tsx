@@ -2,11 +2,17 @@
 import React from "react";
 import { SparklesCore } from "@/components/ui/sparkles";
 
-export function SparklesPreview() {
+export default function Hero() {
   return (
     <div className="h-[40rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
       <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
-        Aceternity
+        <h1 className="text-[3rem] text-gray-500 font-normal">
+          Gain muscle and
+        </h1>
+        <div className="flex">
+          GainD
+          <img className="w-[7rem]" src="polkadot.svg" />T
+        </div>
       </h1>
       <div className="w-[40rem] h-40 relative">
         {/* Gradients */}
