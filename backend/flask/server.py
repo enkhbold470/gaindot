@@ -20,25 +20,31 @@ def root():
 
 @app.route("/upload", methods=["POST"])
 def upload_video():
-    if "video" not in request.files:
-        return jsonify({"error": "No video part in the request"}), 400
+    try:
+        if "video" not in request.files:
+            return jsonify({"error": "No video part in the request"}), 400
 
-    file = request.files["video"]
-    if file.filename == "":
-        return jsonify({"error": "No selected video"}), 400
+        file = request.files["video"]
+        if file.filename == "":
+            return jsonify({"error": "No selected video"}), 400
 
-    # Save the file
-    filename = secure_filename(file.filename)
-    file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-    file.save(file_path)
+        # Save the file
+        filename = secure_filename(file.filename)
+        file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+        file.save(file_path)
+        print(f"Video saved to: {file_path}")
 
-    # Here you can process the video if needed
-    # process_video(file_path)
+        # Rename the file to blob.webm
+        # new_file_path = os.path.join(app.config["UPLOAD_FOLDER"], "blob.webm")
+        # os.rename(file_path, new_file_path)
 
-    return (
-        jsonify({"message": "Video uploaded successfully", "file_path": file_path}),
-        200,
-    )
+        # Process the video
+
+        return jsonify({"message": "done", "file_path": file_path}), 200
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return jsonify({"error": "An error occurred during processing"}), 500
 
 
 if __name__ == "__main__":
