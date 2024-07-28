@@ -41,11 +41,17 @@ const VideoUpload = () => {
   };
 
   return (
-    <div className="text-white">
+    <div className="text-white gap-2">
       <video ref={videoRef} autoPlay></video>
-      <button onClick={startRecording}>Start Recording</button>
-      <button onClick={stopRecording}>Stop Recording</button>
-      <button onClick={sendVideoToBackend}>Upload Video</button>
+      <button className="border" onClick={startRecording}>
+        Start Recording
+      </button>
+      <button className="border" onClick={stopRecording}>
+        Stop Recording
+      </button>
+      <button className="border" onClick={sendVideoToBackend}>
+        Upload Video
+      </button>
     </div>
   );
 };
