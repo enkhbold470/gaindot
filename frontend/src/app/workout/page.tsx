@@ -61,7 +61,7 @@ export default function MultiStepLoaderDemo() {
           {loading === false && showGame === false && (
             <div className="w-[30rem] z-[99]  flex flex-col items-center">
               <p className="text-white p-1 m-1">
-                This is how you look when you do push-ups.
+                This is how you should look when you do push-ups.
               </p>
               <img
                 src="/pushup.jpeg"
