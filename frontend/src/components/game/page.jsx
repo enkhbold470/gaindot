@@ -10,7 +10,7 @@ export default function Game() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
-  const gravity = 1;
+  const gravity = 3;
   const birdSize = 30;
   const gameHeight = 500;
   const pipeWidth = 50;
@@ -39,7 +39,7 @@ export default function Game() {
   useEffect(() => {
     const handleScreenClick = () => {
       if (!gameOver) {
-        setBirdPosition((pos) => Math.max(pos - 50, 0));
+        setBirdPosition((pos) => Math.max(pos - 170, 0));
       }
     };
     window.addEventListener("click", handleScreenClick);
@@ -119,9 +119,9 @@ export default function Game() {
               setScore(0);
               setGameOver(false);
             }}
-            className="text-white bg-purple-700 p-4 rounded-lg"
+            className="text-white bg-purple-700 p-2 rounded-lg"
           >
-            Lets do it again
+            Do it again
           </button>
         </div>
       )}
