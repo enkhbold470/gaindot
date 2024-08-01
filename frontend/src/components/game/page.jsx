@@ -12,7 +12,7 @@ export default function Game() {
 
   const gravity = 1;
   const birdSize = 30;
-  const gameHeight = 700;
+  const gameHeight = 500;
   const pipeWidth = 50;
   const pipeGap = 350;
   const speed = 3;
