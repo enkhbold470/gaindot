@@ -9,7 +9,7 @@ import {
   WalletAddressWeb3,
 } from "@/components/PolkadotComponents";
 import { CardDemo } from "@/components/damn_good_card";
-
+import nft from "@/lib/nft.json";
 export default function GlareCardDemo() {
   return (
     <>
@@ -21,41 +21,22 @@ export default function GlareCardDemo() {
        
       </SignedOutWeb3>
       <SignedInWeb3> */}
-      <div className="w-screen flex flex-col items-center m-2 p-2">
-        <h1 className="flex">
-          Polkadot Wallet Address: <WalletAddressWeb3 />
-        </h1>
-        <h1>Select a NFT you wanna claim </h1>
-      </div>
-      <div className="flex m-4 p-4 items-center text-white gap-5">
-        <GlareCard className="flex items-center justify-center">
-          <img
-            src="https://raw.githubusercontent.com/enkhbold470/gaindot/main/nft_asset/guy_and_girl_doing_military_push_ups_as_an_nft_in_a_1970_retro_cartoon_style_computer_low_pixel%20(1).jpeg"
-            alt=""
-            className="w-full h-full "
-          />
-        </GlareCard>
-        <GlareCard className="flex flex-col items-center justify-center">
-          <img
-            src="https://raw.seadn.io/files/69e1206e27152333685e814a8f4ec354.png"
-            alt=""
-            className="w-full h-full "
-          />
-        </GlareCard>
-        <GlareCard className="flex flex-col items-center justify-center">
-          <img
-            src="https://raw.seadn.io/files/605eaeaa39c7842d72beb7f4b6531e61.png"
-            alt=""
-            className="w-full h-full "
-          />
-        </GlareCard>
-        <GlareCard className="flex flex-col items-center justify-center">
-          <img
-            src="https://raw.seadn.io/files/1f53244fdab323f7d188131e651cf81e.png"
-            alt=""
-            className="w-full h-full "
-          />
-        </GlareCard>
+      <div className="flex flex-col ">
+        <div className=" flex items-center m-2 p-2 ">
+          <h1 className="flex">
+            Polkadot Wallet Address: <WalletAddressWeb3 />
+          </h1>
+        </div>
+        <h1 className="">Select a NFT you wanna claim </h1>
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 h-screen m-4 p-4 text-white gap-5">
+          {nft.map((nfts, index) => (
+            <div key={index}>
+              <GlareCard className="flex items-center justify-center">
+                <img src={nfts.image} alt="" className="w-full h-full " />
+              </GlareCard>
+            </div>
+          ))}
+        </div>
       </div>
       {/* </SignedInWeb3> */}
     </>
