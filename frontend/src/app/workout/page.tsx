@@ -11,7 +11,6 @@ export default function MultiStepLoaderDemo() {
   const [loading, setLoading] = useState(true);
   const [showGame, setShowGame] = useState(false);
   const [showTutorial, setShowTutorial] = useState(false);
-
   const loop = false; // This might be dynamic in your actual code
 
   // useEffect(() => {
@@ -93,6 +92,7 @@ const Home = () => {
       {/* <VideoRecorder /> */}
 
       <Game />
+
       {/* <MultiStepLoaderDemo /> */}
     </div>
   );
