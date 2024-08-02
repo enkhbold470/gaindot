@@ -7,8 +7,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import recentTransactions from "@/lib/recentTransactions.json"; // Ensure this path is correct
-import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
-
 import {
   SignInButtonWeb3,
   SignedInWeb3,
@@ -16,7 +14,7 @@ import {
   UserButtonWeb3,
   WalletAddressWeb3,
 } from "@/components/PolkadotComponents";
-import { CardDemo } from "@/components/damn_good_card";
+import { AnimatedPinDemo } from "@/components/pinDemo";
 
 interface ButtonProps {
   text: string;
@@ -44,12 +42,20 @@ export default function PolkadotCardDemo() {
 
   return (
     <>
-      <SignedOut>
-        <SignInButton />
-        {/* <p className="text-white">Please sign in to view this page.</p> */}
-        <CardDemo />
-      </SignedOut>
-      <SignedIn>
+      <SignedOutWeb3>
+        <SignInButtonWeb3 />
+        <p className="text-white flex justify-center items-center text-2xl">
+          Please sign in to view this page.
+        </p>{" "}
+        {/* <AnimatedPinDemo /> */}
+      </SignedOutWeb3>
+      <SignedInWeb3>
+        <div className="w-screen flex flex-col items-center m-2 p-2">
+          <h1 className="flex">
+            Polkadot Wallet Address: <WalletAddressWeb3 />
+          </h1>
+          {/* <h1>Select a NFT you wanna claim </h1> */}
+        </div>
         <div className="m-5 p-2 border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-center max-w-[30rem] mx-auto p-4 relative h-[30rem] bg-black text-white top-10">
           <Icon className="absolute h-6 w-6 -top-3 -left-3 text-white" />
           <Icon className="absolute h-6 w-6 -bottom-3 -left-3 text-white" />
@@ -57,11 +63,17 @@ export default function PolkadotCardDemo() {
           <Icon className="absolute h-6 w-6 -bottom-3 -right-3 text-white" />
 
           {/* Display EvervaultCard with a random number */}
-          <EvervaultCard text={`${Math.floor(Math.random() * 20) + 2} DOT`} />
+          <h1 className="text-xl">Total points: </h1>
+          {/* Centered and larger "Buy" button */}
+          <EvervaultCard
+            text={`${Math.floor(Math.random() * 20) + 2} Points`}
+          />
 
           {/* Centered and larger "Buy" button */}
           <div className="my-6">
-            <Button text="Buy" primary={true} />
+            <a href="/nfts">
+              <Button text="Claim NTFs" primary={true} />
+            </a>
           </div>
 
           <p className="text-sm border font-light dark:border-white/[0.2] border-black/[0.2] rounded-full mt-4 text-black dark:text-white px-2 py-0.5">
@@ -95,7 +107,7 @@ export default function PolkadotCardDemo() {
             </AccordionItem>
           </Accordion>
         </div>
-      </SignedIn>
+      </SignedInWeb3>
     </>
   );
 }

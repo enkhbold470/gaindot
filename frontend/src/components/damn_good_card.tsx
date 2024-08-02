@@ -14,10 +14,8 @@ export function CardDemo() {
       <CardSkeletonContainer>
         <Skeleton />
       </CardSkeletonContainer>
-      <CardTitle>👋 Hey</CardTitle>
-      <CardDescription>
-        Sign in & connect your wallet to view this page.
-      </CardDescription>
+      <CardTitle>Please connect your wallet.😁</CardTitle>
+      <CardDescription>Refresh to view this page.</CardDescription>
     </Card>
   );
 }
