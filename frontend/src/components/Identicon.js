@@ -6,9 +6,9 @@ class PolkadotAuth extends React.Component {
     // Replace with the actual address you want to render
     const address = WalletAddressWeb3;
     // Define the size of the icon
-    const size = 50;
+    const size = 30;
     // Define the theme of the icon
-    const theme = "polkadot";
+    const theme = "substrate";
 
     return (
       <div>

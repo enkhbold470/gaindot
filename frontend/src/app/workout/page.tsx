@@ -5,14 +5,15 @@ import React, { useEffect, useState } from "react";
 import Game from "@/components/game/page";
 import Address from "@/lib/Instruction.json";
 import { MultiStepLoader as Loader } from "@/components/ui/multi-step-loader";
-import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import {
   SignInButtonWeb3,
   SignedInWeb3,
   SignedOutWeb3,
   UserButtonWeb3,
+  WalletAddressWeb3,
 } from "@/components/PolkadotComponents";
 import { CardDemo } from "@/components/damn_good_card";
+import PolkadotAuth from "@/components/Identicon";
 
 export default function MultiStepLoaderDemo() {
   const [loading, setLoading] = useState(true);
@@ -33,12 +34,19 @@ export default function MultiStepLoaderDemo() {
   // }, [loading]); // This effect depends on the `loop` state
   return (
     <>
-      <SignedOut>
-        <SignInButton />
-        {/* <p className="text-white">Please sign in to view this page.</p> */}
-        <CardDemo />
-      </SignedOut>
-      <SignedIn>
+      <SignedOutWeb3>
+        <SignInButtonWeb3 />
+        <p className="text-white flex justify-center items-center text-2xl">
+          Please connect your wallet and refresh the page to view this page. 😁
+        </p>
+      </SignedOutWeb3>
+      <SignedInWeb3>
+        <div className="w-screen flex flex-col items-center mt-2 pt-2">
+          <h1 className="flex">
+            Polkadot Wallet Address: <WalletAddressWeb3 />
+          </h1>
+          <h1>Do push-ups and collect points </h1>
+        </div>
         <div className="w-screen flex justify-center">
           {/* Core Loader Modal */}
           <Loader
@@ -88,7 +96,7 @@ export default function MultiStepLoaderDemo() {
           )}
           {showGame === true && <Game />}
         </div>
-      </SignedIn>
+      </SignedInWeb3>
     </>
   );
 }
