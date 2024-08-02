@@ -8,6 +8,16 @@ import {
 } from "@/components/ui/accordion";
 import recentTransactions from "@/lib/recentTransactions.json"; // Ensure this path is correct
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
+
+import {
+  SignInButtonWeb3,
+  SignedInWeb3,
+  SignedOutWeb3,
+  UserButtonWeb3,
+  WalletAddressWeb3,
+} from "@/components/PolkadotComponents";
+import { CardDemo } from "@/components/damn_good_card";
+
 interface ButtonProps {
   text: string;
   primary: boolean;
@@ -36,10 +46,11 @@ export default function PolkadotCardDemo() {
     <>
       <SignedOut>
         <SignInButton />
-        <p className="text-white">Please sign in to view this page.</p>
+        {/* <p className="text-white">Please sign in to view this page.</p> */}
+        <CardDemo />
       </SignedOut>
       <SignedIn>
-        <div className="m-5 p-2 border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-center max-w-sm mx-auto p-4 relative h-[30rem] bg-black text-white top-10">
+        <div className="m-5 p-2 border border-black/[0.2] dark:border-white/[0.2] flex flex-col items-center max-w-[30rem] mx-auto p-4 relative h-[30rem] bg-black text-white top-10">
           <Icon className="absolute h-6 w-6 -top-3 -left-3 text-white" />
           <Icon className="absolute h-6 w-6 -bottom-3 -left-3 text-white" />
           <Icon className="absolute h-6 w-6 -top-3 -right-3 text-white" />
@@ -54,7 +65,7 @@ export default function PolkadotCardDemo() {
           </div>
 
           <p className="text-sm border font-light dark:border-white/[0.2] border-black/[0.2] rounded-full mt-4 text-black dark:text-white px-2 py-0.5">
-            Polkadot ID: 0x4f3f7d1a0x4f3f7d1a0x4f3f7d1a
+            Polkadot Wallet Address: <WalletAddressWeb3 />
           </p>
 
           <Accordion type="single" collapsible>

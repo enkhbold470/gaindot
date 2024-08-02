@@ -2,18 +2,30 @@
 import { GlareCard } from "@/components/ui/glare-card";
 import Address from "@/lib/Address.json";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  SignInButtonWeb3,
+  SignedInWeb3,
+  SignedOutWeb3,
+  UserButtonWeb3,
+  WalletAddressWeb3,
+} from "@/components/PolkadotComponents";
+import { CardDemo } from "@/components/damn_good_card";
 
 export default function GlareCardDemo() {
   return (
     <>
       <SignedOut>
         <SignInButton />
-        <p className="text-white">Please sign in to view this page.</p>
+        {/* <p className="text-white flex justify-center items-center text-2xl">
+          
+        </p> */}
+        <CardDemo />
       </SignedOut>
       <SignedIn>
-        <UserButton />
-
-        <h1 className="text-white">NFTs I have earned:</h1>
+        <h1>
+          Polkadot Wallet Address: <WalletAddressWeb3 />
+        </h1>
+        <h1>Claim NTFs with your Polkadot Wallet Address:</h1>
         <div className="flex m-4 p-4 items-center text-white gap-5">
           <GlareCard className="flex flex-col items-center justify-center">
             <img
@@ -21,9 +33,6 @@ export default function GlareCardDemo() {
               alt=""
               className="w-full h-full "
             />
-            <p className="text-white font-bold text-xl mt-4">
-              {Address[0].walletAddress}
-            </p>
           </GlareCard>
           <GlareCard className="flex flex-col items-center justify-center">
             <img
@@ -31,9 +40,6 @@ export default function GlareCardDemo() {
               alt=""
               className="w-full h-full "
             />
-            <p className="text-white font-bold text-xl mt-4">
-              {Address[1].walletAddress}
-            </p>
           </GlareCard>
           <GlareCard className="flex flex-col items-center justify-center">
             <img
@@ -41,9 +47,6 @@ export default function GlareCardDemo() {
               alt=""
               className="w-full h-full "
             />
-            <p className="text-white font-bold text-xl mt-4">
-              {Address[1].walletAddress}
-            </p>
           </GlareCard>
           <GlareCard className="flex flex-col items-center justify-center">
             <img
@@ -51,9 +54,6 @@ export default function GlareCardDemo() {
               alt=""
               className="w-full h-full "
             />
-            <p className="text-white font-bold text-xl mt-4">
-              {Address[1].walletAddress}
-            </p>
           </GlareCard>
         </div>
       </SignedIn>
