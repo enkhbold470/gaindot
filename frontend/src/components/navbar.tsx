@@ -23,15 +23,15 @@ export function FloatingNavDemo() {
       ),
     },
     {
-      name: "CryptoInvest",
-      link: "/crypto",
+      name: "Claim NFT",
+      link: "/claim_nft",
       icon: (
         <IconDiamondFilled className="h-4 w-4 text-neutral-500 dark:text-white" />
       ),
     },
     {
-      name: "NTFs",
-      link: "/ntfs",
+      name: "NFTs",
+      link: "/nfts",
       icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
   ];

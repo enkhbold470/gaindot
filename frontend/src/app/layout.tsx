@@ -1,15 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { FloatingNavDemo } from "@/components/navbar";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
-const inter = Inter({ subsets: ["latin"] });
+import { PolkadotProvider } from "@/components/PolkadotProvider";
 
 export const metadata: Metadata = {
   title: "GainDOT",
@@ -23,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <PolkadotProvider>
       <html lang="en">
         <head>
           <meta charSet="utf-8" />
@@ -36,6 +28,6 @@ export default function RootLayout({
           {children}
         </body>
       </html>
-    </ClerkProvider>
+    </PolkadotProvider>
   );
 }
