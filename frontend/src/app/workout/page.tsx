@@ -34,69 +34,69 @@ export default function MultiStepLoaderDemo() {
   // }, [loading]); // This effect depends on the `loop` state
   return (
     <>
-      <SignedOutWeb3>
+      {/* <SignedOutWeb3>
         <SignInButtonWeb3 />
         <p className="text-white flex justify-center items-center text-2xl">
           Please connect your wallet and refresh the page to view this page. 😁
         </p>
       </SignedOutWeb3>
-      <SignedInWeb3>
-        <div className="w-screen flex flex-col items-center mt-2 pt-2">
-          <h1 className="flex">
-            Polkadot Wallet Address: <WalletAddressWeb3 />
-          </h1>
-          <h1>Do push-ups and collect points </h1>
-        </div>
-        <div className="w-screen flex justify-center">
-          {/* Core Loader Modal */}
-          <Loader
-            loadingStates={Address.map((title) => ({
-              text: title.tutorial,
-            }))}
-            loading={loading}
-            duration={1500}
-            loop={false}
-          />
-          {/*when game is loading and it will show start button */}
-          {loading && (
-            <div className="flex justify-center border-5 border-white w-screen  m-2">
-              <button
-                className=" justify-center items-center font-extrabold text-white bg-purple-700 z-[120] mt-10 p-5 rounded-xl"
-                onClick={() => {
-                  setLoading(false);
-                  setShowGame(false);
-                }}
-              >
-                START
-              </button>
-            </div>
-          )}
-        </div>
-        <div className=" flex justify-center p-5 m-5">
-          {loading === false && showGame === false && (
-            <div className="w-[30rem] z-[99]  flex flex-col items-center">
-              <p className="text-white p-1 m-1">
-                This is how you should look when you do push-ups.
-              </p>
-              <img
-                src="/pushup.jpeg"
-                alt="push-ups"
-                className="rounded-xl border-2 border-purple-700"
-              />
-              <button
-                onClick={() => {
-                  setShowTutorial(false);
-                  setShowGame(true);
-                }}
-                className="w-[20rem] font-extrabold text-white bg-purple-700 z-[120] mt-10 p-5 rounded-xl"
-              >
-                Ok, Got it!
-              </button>
-            </div>
-          )}
-          {showGame === true && <Game />}
-        </div>
-      </SignedInWeb3>
+      <SignedInWeb3> */}
+      <div className="w-screen flex flex-col items-center mt-2 pt-2">
+        <h1 className="flex">
+          Polkadot Wallet Address: <WalletAddressWeb3 />
+        </h1>
+        <h1>Do push-ups and collect points </h1>
+      </div>
+      <div className="w-screen flex justify-center">
+        {/* Core Loader Modal */}
+        <Loader
+          loadingStates={Address.map((title) => ({
+            text: title.tutorial,
+          }))}
+          loading={loading}
+          duration={1500}
+          loop={false}
+        />
+        {/*when game is loading and it will show start button */}
+        {loading && (
+          <div className="flex justify-center border-5 border-white w-screen  m-2">
+            <button
+              className=" justify-center items-center font-extrabold text-white bg-purple-700 z-[120] mt-10 p-5 rounded-xl"
+              onClick={() => {
+                setLoading(false);
+                setShowGame(false);
+              }}
+            >
+              START
+            </button>
+          </div>
+        )}
+      </div>
+      <div className=" flex justify-center p-5 m-5">
+        {loading === false && showGame === false && (
+          <div className="w-[30rem] z-[99]  flex flex-col items-center">
+            <p className="text-white p-1 m-1">
+              This is how you should look when you do push-ups.
+            </p>
+            <img
+              src="/pushup.jpeg"
+              alt="push-ups"
+              className="rounded-xl border-2 border-purple-700"
+            />
+            <button
+              onClick={() => {
+                setShowTutorial(false);
+                setShowGame(true);
+              }}
+              className="w-[20rem] font-extrabold text-white bg-purple-700 z-[120] mt-10 p-5 rounded-xl"
+            >
+              Ok, Got it!
+            </button>
+          </div>
+        )}
+        {showGame === true && <Game />}
+      </div>
+      {/* </SignedInWeb3> */}
     </>
   );
 }
