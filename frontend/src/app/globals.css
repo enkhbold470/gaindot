@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+h1 {
+  color: white;
+}
+
 .VideoInput {
   display: flex;
   flex-direction: column;

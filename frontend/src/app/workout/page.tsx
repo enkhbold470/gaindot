@@ -6,6 +6,13 @@ import Game from "@/components/game/page";
 import Address from "@/lib/Instruction.json";
 import { MultiStepLoader as Loader } from "@/components/ui/multi-step-loader";
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import {
+  SignInButtonWeb3,
+  SignedInWeb3,
+  SignedOutWeb3,
+  UserButtonWeb3,
+} from "@/components/PolkadotComponents";
+import { CardDemo } from "@/components/damn_good_card";
 
 export default function MultiStepLoaderDemo() {
   const [loading, setLoading] = useState(true);
@@ -28,7 +35,8 @@ export default function MultiStepLoaderDemo() {
     <>
       <SignedOut>
         <SignInButton />
-        <p className="text-white">Please sign in to view this page.</p>
+        {/* <p className="text-white">Please sign in to view this page.</p> */}
+        <CardDemo />
       </SignedOut>
       <SignedIn>
         <div className="w-screen flex justify-center">
