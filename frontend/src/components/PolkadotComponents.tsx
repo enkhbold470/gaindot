@@ -1,28 +1,23 @@
-// PolkadotComponents.js
+// PolkadotComponents.tsx
 "use client";
-import React from "react";
+import React, { ReactNode } from "react";
 import { usePolkadot } from "./PolkadotProvider";
 import { web3FromAddress } from "@polkadot/extension-dapp";
 
-export const SignInButtonWeb3 = () => {
-  const { accounts, extensionReady, walletAddress } = usePolkadot();
+interface ChildrenProps {
+  children: ReactNode;
+}
+
+export const SignInButtonWeb3: React.FC = () => {
+  const { extensionReady } = usePolkadot();
 
   if (!extensionReady) return <button disabled>Loading...</button>;
 
-  return (
-    <button
-      onClick={() => {
-        console.log("Sign in logic here");
-        window.location.reload();
-      }}
-    >
-      Click Sign In
-    </button>
-  );
+  return <button>Sign In</button>;
 };
 
-export const SignedInWeb3 = ({ children }) => {
-  const { accounts, extensionReady, walletAddress } = usePolkadot();
+export const SignedInWeb3: React.FC<ChildrenProps> = ({ children }) => {
+  const { accounts, extensionReady } = usePolkadot();
 
   if (!extensionReady || accounts.length === 0) {
     return null;
@@ -31,8 +26,8 @@ export const SignedInWeb3 = ({ children }) => {
   return <>{children}</>;
 };
 
-export const SignedOutWeb3 = ({ children }) => {
-  const { accounts, extensionReady, walletAddress } = usePolkadot();
+export const SignedOutWeb3: React.FC<ChildrenProps> = ({ children }) => {
+  const { accounts, extensionReady } = usePolkadot();
 
   if (extensionReady && accounts.length > 0) {
     return null;
@@ -41,8 +36,8 @@ export const SignedOutWeb3 = ({ children }) => {
   return <>{children}</>;
 };
 
-export const UserButtonWeb3 = () => {
-  const { accounts, extensionReady, walletAddress } = usePolkadot();
+export const UserButtonWeb3: React.FC = () => {
+  const { accounts, extensionReady } = usePolkadot();
 
   if (!extensionReady || accounts.length === 0) return null;
 
@@ -52,7 +47,8 @@ export const UserButtonWeb3 = () => {
     </button>
   );
 };
-export const WalletAddressWeb3 = () => {
+
+export const WalletAddressWeb3: React.FC = () => {
   const { accounts, extensionReady, walletAddress } = usePolkadot();
 
   if (!extensionReady || accounts.length === 0)
