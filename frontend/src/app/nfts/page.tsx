@@ -28,9 +28,9 @@ export default function GlareCardDemo() {
         <h1>Select a NFT you wanna claim </h1>
       </div>
       <div className="flex m-4 p-4 items-center text-white gap-5">
-        <GlareCard className="flex flex-col items-center justify-center">
+        <GlareCard className="flex items-center justify-center">
           <img
-            src="https://i.seadn.io/s/raw/files/0a35984e9442dffdecd9a8f6733b2385.png?auto=format&dpr=1&w=640"
+            src="https://raw.githubusercontent.com/enkhbold470/gaindot/main/nft_asset/guy_and_girl_doing_military_push_ups_as_an_nft_in_a_1970_retro_cartoon_style_computer_low_pixel%20(1).jpeg"
             alt=""
             className="w-full h-full "
           />
