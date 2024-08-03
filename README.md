@@ -35,12 +35,15 @@ GainDOT is a decentralized app (dApp) that tracks your fitness activities and re
 - **Community Engagement**: Participate in challenges, leaderboards, and social features to stay motivated and connected with other fitness enthusiasts.
 
 ### Screenshots
+<img width="1679" alt="ss8" src="https://github.com/user-attachments/assets/2fc31f61-efc6-4a3e-ac30-039614a06f93">
+<img width="1680" alt="ss7" src="https://github.com/user-attachments/assets/5ff33d51-c107-4fa0-95c0-46c8c2dcaba5">
+<img width="1680" alt="ss6" src="https://github.com/user-attachments/assets/81e84704-1fa8-45f0-8a35-0ab8c26af6c9">
+<img width="1680" alt="ss5" src="https://github.com/user-attachments/assets/a8799bde-f858-44c8-94fe-2997346aaf0a">
+<img width="1676" alt="ss4" src="https://github.com/user-attachments/assets/7588574d-9cca-4b69-83d3-f3cf534ae66e">
+<img width="1680" alt="ss3" src="https://github.com/user-attachments/assets/f3086304-8409-43da-ab1c-20d291fc6b70">
+<img width="1676" alt="ss2" src="https://github.com/user-attachments/assets/6bb82e2a-3eb6-42c0-bafb-8780f79d2f14">
+<img width="1680" alt="ss1" src="https://github.com/user-attachments/assets/246394ac-e790-42f3-bf45-573bd3b1a561">
 
-![Screenshot 1](https://github.com/user-attachments/assets/244b565b-f2f7-4899-8049-111562a055d3)
-![Screenshot 2](https://github.com/user-attachments/assets/36f99ba0-4c29-4206-ab69-02a20f2c1353)
-![Screenshot 3](https://github.com/user-attachments/assets/40b09ea4-ffa6-4e59-ba93-48fc9215cfb5)
-![Screenshot 4](https://github.com/user-attachments/assets/ff6638a5-4ad8-4466-8070-61b4829d88e7)
-![Screenshot 5](https://github.com/user-attachments/assets/53eaa32c-2bf1-44f5-ad2c-8c378529ca32)
 
 ### Demo Video
 
