@@ -31,9 +31,11 @@ export default function GlareCardDemo() {
         <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 h-screen m-4 p-4 text-white gap-5">
           {nft.map((nfts, index) => (
             <div key={index}>
-              <GlareCard className="flex items-center justify-center">
-                <img src={nfts.image} alt="" className="w-full h-full " />
-              </GlareCard>
+              <a href={nfts.link} target="_blank">
+                <GlareCard className="flex items-center justify-center">
+                  <img src={nfts.image} alt="" className="w-full h-full " />
+                </GlareCard>
+              </a>
             </div>
           ))}
         </div>
